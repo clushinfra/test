@@ -19,7 +19,7 @@ pipeline {
     stage('Push to Nexus') {
       steps {
         script {
-          docker.withRegistry('http://27.96.145.28:30081/', 'admin') {
+          docker.withRegistry('http://27.96.145.28:30081/', 'nexus-creds') {
             dockerImage.push()
           }
         }
