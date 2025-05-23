@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-html
+  labels:
+    app: test-html
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-html
+  template:
+    metadata:
+      labels:
+        app: test-html
+    spec:
+      containers:
+      - name: nginx
+        image: http://27.96.145.28:30081/web/test-html:latest
+        ports:
+        - containerPort: 80
