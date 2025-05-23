@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    IMAGE = "nexus.yourdomain.com/web/test-html:latest"
+    IMAGE = "http://27.96.145.28:30081/web/test-html:latest"
   }
   stages {
     stage('Checkout') {
@@ -19,7 +19,7 @@ pipeline {
     stage('Push to Nexus') {
       steps {
         script {
-          docker.withRegistry('http://nexus.yourdomain.com', 'nexus-creds') {
+          docker.withRegistry('http://27.96.145.28:30081/', 'admin') {
             dockerImage.push()
           }
         }
