@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_REPO_URL = "http://27.96.145.28:30081"
+        IMAGE_REPO_URL = "http://27.96.145.28:30500"
         IMAGE_NAME = "${IMAGE_REPO_URL}/${NS}-${CICD_BRANCH}-${DEPLOY_APP_NAME}"
         ARGOCD_URL = "27.96.145.28:30938"
         ARGOCD_APP_NAME = "${NS}-${CICD_BRANCH}-${DEPLOY_APP_NAME}"
