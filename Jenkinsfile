@@ -47,8 +47,8 @@ EOF
                     git credentialsId: 'GITHUB', url: "https://${CICD_GIT_URL}", branch: "${CICD_BRANCH}"
                     sh """
                     git branch
-                    git config --global user.name jenkins
-                    git config --global user.email jenkins@clush.net
+                    git config --global user.name clushinfra
+                    git config --global user.email infra@clush.net
                     git remote update
                     sed -i -E 's%image:.+%image: $IMAGE_NAME%' $DEPLOY_PATH/deploy.yaml
                     git add $DEPLOY_PATH/deploy.yaml
