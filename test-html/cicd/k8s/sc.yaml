@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: jenkins1-sc
+provisioner: blk.csi.ncloud.com
+parameters:
+  type: SSD
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
