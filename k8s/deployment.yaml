@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: $NEXUS_REPO/test-html:latest
+        image: $NEXUS_REPO:30500/test-html:latest
         ports:
         - containerPort: 80
