@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    IMAGE = "http://27.96.145.28:30081/web/test-html:latest"
+    IMAGE = "http://27.96.145.28:30081/test-html:latest"
   }
   stages {
     stage('Checkout') {
