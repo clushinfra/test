@@ -36,7 +36,7 @@ EOF
                 """
                     sh "buildah bud --isolation chroot -t ${IMAGE_NAME} -f Dockerfile ."
                     sh "buildah push --tls-verify=false ${IMAGE_NAME}"
-                    sh "buildah rmi --tls-verify=false ${IMAGE_NAME}"
+                    sh "buildah rmi ${IMAGE_NAME}"
                 }
             }
         }
