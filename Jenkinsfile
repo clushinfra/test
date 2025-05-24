@@ -9,10 +9,6 @@ pipeline {
         DEPLOY_PATH = "${DEPLOY_APP_NAME}/cicd/k8s"
     }
 
-    tools {
-		nodejs 'node-16.20.0'
-	}
-
     stages {        
         stage('Git Clone') {
             steps {
@@ -26,16 +22,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Source Build') {
-            steps {
-                // --legacy-peer-deps 옵션은 react-intl 및 react-sotrable-tree 의 코드를 수정하면 disable 된다.
-                sh "npm install -g yarn"
-                sh "npm install --legacy-peer-deps"
-                sh "yarn ${YARN_GOAL}"
-            }
-        }
-
         stage('Image Build & Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'NEXUS', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PSW')]) {
