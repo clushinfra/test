@@ -1,14 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test
-  labels:
-    app.kubernetes.io/name: test
+  name: test-html-svc
 spec:
   selector:
-    app.kubernetes.io/name: test
+    app: test-html
   ports:
-  - name: http
-    port: 80
+  - port: 80
     targetPort: 80
+    nodePort: 31111
   type: NodePort
