@@ -1,44 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: jenkins
-  name: jenkins
-  namespace: jenkins
+  name: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins
+      app.kubernetes.io/name: test
   template:
     metadata:
       labels:
-        app: jenkins
+        app.kubernetes.io/name: test
+        app_name: test
+        project_name: workshop
     spec:
-      securityContext:
-        fsGroup: 1000
       containers:
-      - image: 27.96.145.28:30500/default-main-test-html:3c84baf-16
+      - image: nexus-repo.kb-sys.co.kr/workshop-workshop-workshop-front:9ce2113-16
         imagePullPolicy: Always
-        name: jenkins
+        name: test
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: config
+          readOnly: true
         ports:
-        - containerPort: 8081
-          protocol: TCP
-        - containerPort: 50001
-          protocol: TCP
+        - name: http
+          containerPort: 80
         resources:
           limits:
-            cpu: 2
-            memory: 4Gi
+            cpu: 250m
+            memory: 500Mi
           requests:
-            cpu: 1
-            memory: 2Gi
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - name: jenkins-home1
-          mountPath: /var/jenkins_home
+            cpu: 250m
+            memory: 500Mi
+        env:
+        - name: TZ
+          value: Asia/Seoul
       volumes:
-      - name: jenkins-home1
-        persistentVolumeClaim:
-          claimName: jenkins1-pvc
+      - configMap:
+          name: portal-nginx
+        name: config
