@@ -1,41 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test
+  name: test-html
+  labels:
+    app: test-html
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: test
+      app: test-html
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: test
-        app_name: test
-        project_name: workshop
+        app: test-html
     spec:
       containers:
-      - image: 27.96.145.28:30500/default-main-test-html:be3a243-18
-        imagePullPolicy: Always
-        name: test
-        volumeMounts:
-        - mountPath: /etc/nginx/conf.d
-          name: config
-          readOnly: true
+      - name: nginx
+        image: 27.96.145.28/:30500/test-html:latest
         ports:
-        - name: http
-          containerPort: 80
-        resources:
-          limits:
-            cpu: 250m
-            memory: 500Mi
-          requests:
-            cpu: 250m
-            memory: 500Mi
-        env:
-        - name: TZ
-          value: Asia/Seoul
-      volumes:
-      - configMap:
-          name: portal-nginx
-        name: config
+        - containerPort: 80
