@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: test-html-svc
+  name: test-html
 spec:
   selector:
     app: test-html
