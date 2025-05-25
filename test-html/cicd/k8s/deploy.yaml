@@ -15,7 +15,7 @@ spec:
         project_name: test
     spec:
       containers:
-      - image: 27.96.145.28:30500/default-main-test-html:c69e966-24
+      - image: 27.96.145.28:30500/default-main-test-html:bfebf8a-25
         imagePullPolicy: Always
         name: test
         volumeMounts:
