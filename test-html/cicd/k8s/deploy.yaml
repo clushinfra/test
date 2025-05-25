@@ -12,7 +12,7 @@ spec:
       labels:
         app.kubernetes.io/name: test
         app_name: test
-        project_name: workshop
+        project_name: test
     spec:
       containers:
       - image: 27.96.145.28:30500/default-main-test-html:c69e966-24
