@@ -62,7 +62,7 @@ EOF
         stage('ArgoCD Sync') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'GITHUB', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN'), usernamePassword(credentialsId: 'ARGOCD', usernameVariable: 'ARGOCD_USER', passwordVariable: 'ARGOCD_PSW')]){
-                    sh "argocd login --tls-verify=false ${ARGOCD_URL} --username ${ARGOCD_USER} --password ${ARGOCD_PSW} --grpc-web"
+                    sh "argocd login ${ARGOCD_URL} --username ${ARGOCD_USER} --password ${ARGOCD_PSW} --grpc-web"
                     sh "argocd repo add 'https://${CICD_GIT_URL}' --username ${GIT_USER} --password ${GIT_TOKEN} --grpc-web"
                     sh "argocd proj create ${NS} --src='*' --dest='*',${NS} --upsert --grpc-web"
                     sh "argocd proj allow-cluster-resource ${NS} '*' '*' --grpc-web"
