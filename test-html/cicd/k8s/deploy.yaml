@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 27.96.145.28/:30500/test-html:latest
+        image: 27.96.145.28:30500/default-main-test-html:71e378f-19
         ports:
         - containerPort: 80
