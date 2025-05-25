@@ -18,7 +18,7 @@ spec:
       securityContext:
         fsGroup: 1000
       containers:
-      - image: 27.96.145.28:30500/default-main-test-html:dbca59f-14
+      - image: 27.96.145.28:30500/default-main-test-html:9b90d1f-15
         imagePullPolicy: Always
         name: jenkins
         ports:
