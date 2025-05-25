@@ -69,7 +69,7 @@ EOF
                     sh "argocd app create ${ARGOCD_APP_NAME} --project ${NS} \
                     --repo 'https://${CICD_GIT_URL}' --revision ${CICD_BRANCH} --path ${DEPLOY_PATH} \
                     --dest-server ${CLUSTER} --sync-option CreateNamespace=true --dest-namespace ${NS} --grpc-web"
-                    sh "argocd app sync ${ARGOCD_APP_NAME} --project ${NS} --grpc-web"
+                    sh "argocd app sync ${ARGOCD_APP_NAME} --project ${NS} --grpc-web --prune"
                 }
             }
         }
