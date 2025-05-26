@@ -4,9 +4,9 @@ metadata:
   name: test
 spec:
   selector:
-    app: test
+    app.kubernetes.io/name: test
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 31111
+    - port: 80
+      targetPort: 80
+      nodePort: 31111
   type: NodePort
